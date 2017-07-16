@@ -20,7 +20,7 @@ class Routes{
 				if (!error) {
 					response.send("Win!");
 				}else{
-					response.send("Lose!");
+					response.send(error);
 				}
 			});
 			// response.send("Server Images ON!");
