@@ -18,7 +18,7 @@ class Routes{
 
 			blobService.createBlockBlobFromLocalFile('images-service', 'jubs', 'jubs.txt', function(error, result, res) {
 				if (!error) {
-					response.send(res);
+					response.send(result);
 					// file uploaded
 				}else{
 					reponse.send(error);
