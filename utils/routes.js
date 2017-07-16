@@ -13,7 +13,7 @@ class Routes{
 	appRoutes(){
 		let idService = "jubs";
 		this.app.get('/', function (request, response) {
-			fs.unlink('{idService}.jpg', function(error) {
+			fs.unlink(idService+'.jpg', function(error) {
 				if (error) {
 					response.send(error);
 				}else{
