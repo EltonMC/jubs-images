@@ -34,7 +34,7 @@ class Routes{
 			// 		}else{
 			// 			registrationResponse.error = false;
 			// 			registrationResponse.message = `Image save.`;
-						response.status(200).json(registrationResponse);
+						response.status(200).json(data.images);
 			// 		}
 			// 	});					
 
