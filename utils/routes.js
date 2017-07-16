@@ -19,6 +19,8 @@ class Routes{
 			blobService.createBlockBlobFromLocalFile('images-service', 'jubs2', './jubs.jpg', function(error, result, res) {
 				if (!error) {
 					response.send("Win!");
+				}else{
+					response.send("Lose!");
 				}
 			});
 			// response.send("Server Images ON!");
