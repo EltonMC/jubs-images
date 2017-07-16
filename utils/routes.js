@@ -2,7 +2,7 @@
 'use strict';
 
 const helper = require('./helper');
-
+const fs = require("fs");
 class Routes{
 
 	constructor(app){
@@ -18,14 +18,19 @@ class Routes{
 			var base64Data = base64.replace(/^data:image\/jpeg;base64,/, "");
 			base64Data  +=  base64Data.replace('+', ' ');
 
-			require("fs").writeFile("out.jpeg", base64Data, 'base64', function(err) {
+			fs.writeFile("out.jpeg", base64Data, 'base64', function(err) {
 				if(!err){
 					var azure = require('azure-storage');
 					var blobService = azure.createBlobService();
 
 					blobService.createBlockBlobFromLocalFile('images-service', 'jubs5', 'out.jpeg', function(error, result, res) {
 						if (!error) {
-							response.send("Win!");
+							fs.unlink('out.jpeg', function(error) {
+								if (error) {
+									throw error;
+								}
+								console.log('Deleted dog.jpg!!');
+							});
 						}else{
 							response.send(error);
 						}
@@ -34,6 +39,7 @@ class Routes{
 					console.log(err);
 				}
 			});
+
 
 
 			// response.send("Server Images ON!");
