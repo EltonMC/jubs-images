@@ -15,13 +15,11 @@ class Routes{
 		this.app.get('/', function (request, response) {
 			var azure = require('azure-storage');
 			var blobService = azure.createBlobService();
-			blobService.createContainerIfNotExists('taskcontainer', {
-			publicAccessLevel: 'blob'
-			}, function(error, result, response) {
-			if (!error) {
-				// if result = true, container was created.
-				// if result = false, container already existed.
-			}
+
+			blobService.createBlockBlobFromLocalFile('images-service', 'taskblob', 'task1-upload.txt', function(error, result, response) {
+				if (!error) {
+					// file uploaded
+				}
 			});
 			response.send("Server Images ON!");
 		});
