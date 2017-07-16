@@ -11,7 +11,7 @@
     "api"
   ],
   "author": "Elton Carvalho",
-  "license": "MIT",
+  "license": "JUBS",
   "dependencies": {
     "azure-storage": "^2.2.1",
     "body-parser": "^1.15.2",
