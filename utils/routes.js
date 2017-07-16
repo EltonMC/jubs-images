@@ -16,12 +16,12 @@ class Routes{
 			var azure = require('azure-storage');
 			var blobService = azure.createBlobService();
 
-			blobService.createBlockBlobFromLocalFile('images-service', 'jubs2', './jubs.jpg', function(error, result, response) {
+			blobService.createBlockBlobFromLocalFile('images-service', 'jubs2', './jubs.jpg', function(error, result, res) {
 				if (!error) {
-					// file uploaded
+					response.send("Win!");
 				}
 			});
-			response.send("Server Images ON!");
+			// response.send("Server Images ON!");
 		});
 	}
 
