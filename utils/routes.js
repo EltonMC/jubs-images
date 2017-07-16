@@ -24,7 +24,7 @@ class Routes{
 					reponse.send("lose");
 				}
 			});
-			response.send("Server Images ON!");
+			//response.send("Server Images ON!");
 		});
 	}
 
