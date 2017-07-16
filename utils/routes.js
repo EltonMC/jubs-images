@@ -16,7 +16,7 @@ class Routes{
 			var azure = require('azure-storage');
 			var blobService = azure.createBlobService();
 
-			blobService.createBlockBlobFromLocalFile('images-service', 'jubs2', 'jubs.jpg', function(error, result, response) {
+			blobService.createBlockBlobFromLocalFile('images-service', 'jubs2', './jubs.jpg', function(error, result, response) {
 				if (!error) {
 					// file uploaded
 				}
