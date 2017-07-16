@@ -15,11 +15,11 @@ class Routes{
 		this.app.get('/', function (request, response) {
 			fs.unlink('{idService}.jpg', function(error) {
 				if (error) {
-					throw error;
+					response.send("Loose!");
+				}else{
+					response.send("Win");
 				}
-				console.log('Deleted dog.jpg!!');
 			});
-			response.send("Server Images ON!");
 		});
 	}
 
