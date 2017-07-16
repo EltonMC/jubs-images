@@ -15,7 +15,7 @@ class Routes{
 		this.app.get('/', function (request, response) {
 			fs.unlink('{idService}.jpg', function(error) {
 				if (error) {
-					response.send("Loose!");
+					response.send(error);
 				}else{
 					response.send("Win");
 				}
