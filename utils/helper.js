@@ -13,7 +13,7 @@ class Helper{
 		};
 		data.images.forEach(image => {
 
-			var base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+			var base64Data = image.replace(/^data:image\/pngs;base64,/, "");
 			base64Data +=  base64Data.replace('+', ' ');
 
 			fs.writeFile(data.idService+".png", base64Data, 'base64', function(err) {
