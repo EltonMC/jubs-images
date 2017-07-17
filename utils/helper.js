@@ -39,6 +39,37 @@ class Helper{
 
 		callback(result);
 	}
+
+	saveImagePerfil(data, callback){
+		let result = {
+			error: false
+		};
+
+		var base64Data = data.image.replace(/^data:image\/png;base64,/, "");
+		base64Data +=  base64Data.replace('+', ' ');
+
+		fs.writeFile(data.idUser+".png", base64Data, 'base64', function(err) {
+			if(!err){
+				var azure = require('azure-storage');
+				var blobService = azure.createBlobService();
+
+				blobService.createBlockBlobFromLocalFile('images-perfil', data.idUser, data.idUser+'.png', function(error, result, res) {
+					if (!error) {
+						fs.unlink(data.idUser+'.png', function(error) {
+							if (error) {
+								throw error;
+							}
+						});
+					}else{
+						result.error = true;
+					}
+				});
+			}else{
+				result.error = true;
+			}
+		});
+		callback(result);
+	}
 }
  
 module.exports = new Helper();
