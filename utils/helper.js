@@ -8,7 +8,7 @@ class Helper{
 
 	saveImagesService(data, callback){
 		let result = {
-			count: 0,
+			count: 1,
 			error: false
 		};
 		data.images.forEach(image => {
