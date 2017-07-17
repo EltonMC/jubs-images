@@ -20,15 +20,9 @@ class Server{
     }
 
     appConfig(){        
-        this.app.use(
-            bodyParser.json()
-        );
-        this.app.use(
-        	cors()
-        );
-        app.use(
-            bodyParser.json({limit: '50mb'})
-        );
+        this.app.use(bodyParser.json({limit: '20mb'}));
+        this.app.use(cors());
+
 
     }
 
