@@ -28,15 +28,15 @@ class Routes{
 			}else {
 				helper.saveImagesService(data, (result) =>{
 
-					if (result.error) {
-						registrationResponse.error = true;
-						registrationResponse.message = `Server error.`;
-						response.status(404).json(registrationResponse);
-					}else{
-						registrationResponse.error = false;
-						registrationResponse.message = `Image save.`;
-						response.status(200).json(data.images);
-					}
+					// if (result.error) {
+					// 	registrationResponse.error = true;
+					// 	registrationResponse.message = `Server error.`;
+					// 	response.status(404).json(registrationResponse);
+					// }else{
+					// 	registrationResponse.error = false;
+					// 	registrationResponse.message = `Image save.`;
+					// 	response.status(200).json(data.images);
+					// }
 				});					
 			}
 		});
