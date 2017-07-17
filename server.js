@@ -26,6 +26,10 @@ class Server{
         this.app.use(
         	cors()
         );
+        app.use(
+            express.json({limit: '50mb'})
+        );
+
     }
 
     /* Including app Routes starts*/
