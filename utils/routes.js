@@ -37,8 +37,7 @@ class Routes{
 						response.status(200).json(data.images);
 			// 		}
 			// 	});					
-
-			}
+			// }
 		});
 
 		this.app.get('/', function (request, response) {
