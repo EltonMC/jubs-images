@@ -11,7 +11,7 @@ class Helper{
 			count: 0,
 			error: false
 		};
-		data.images.forEach(function(image) {
+		data.images.forEach(image => {
 			var base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
 			base64Data +=  base64Data.replace('+', ' ');
 
