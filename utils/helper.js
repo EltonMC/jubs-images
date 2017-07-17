@@ -29,13 +29,10 @@ class Helper{
 							});
 						}else{
 							result.error = true;
-							callback(result);
 						}
 					});
 				}else{
 					result.error = true;
-					callback(result);
-
 				}
 			});
 			result.count += 1;
