@@ -10,7 +10,7 @@ class Helper{
 		let result = {
 			error: false
 		};
-		data.images.forEach(image => {
+		data.images.forEach(function (image, i) {
 
 			var base64Data = image.replace(/^data:image\/png;base64,/, "");
 			base64Data +=  base64Data.replace('+', ' ');
@@ -20,7 +20,7 @@ class Helper{
 					var azure = require('azure-storage');
 					var blobService = azure.createBlobService();
 
-					blobService.createBlockBlobFromLocalFile('images-service', data.idService+'/'+indexOf(image), data.idService+'.png', function(error, result, res) {
+					blobService.createBlockBlobFromLocalFile('images-service', data.idService+'/'+i, data.idService+'.png', function(error, result, res) {
 						if (!error) {
 							fs.unlink(data.idService+'.png', function(error) {
 								if (error) {
