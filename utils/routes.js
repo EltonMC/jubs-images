@@ -1,8 +1,9 @@
 
 'use strict';
 
-const helper = require('./helper');
+// const helper = require('./helper');
 const fs = require("fs");
+
 class Routes{
 
 	constructor(app){
