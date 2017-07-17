@@ -8,7 +8,6 @@ class Helper{
 
 	saveImagesService(data, callback){
 		let result = {
-			count: 1,
 			error: false
 		};
 		data.images.forEach(image => {
@@ -21,7 +20,7 @@ class Helper{
 					var azure = require('azure-storage');
 					var blobService = azure.createBlobService();
 
-					blobService.createBlockBlobFromLocalFile('images-service', data.idService+'/'+result.count, data.idService+'.png', function(error, result, res) {
+					blobService.createBlockBlobFromLocalFile('images-service', data.idService+'/'+indexOf(image), data.idService+'.png', function(error, result, res) {
 						if (!error) {
 							fs.unlink(data.idService+'.png', function(error) {
 								if (error) {
@@ -36,8 +35,6 @@ class Helper{
 					result.error = true;
 				}
 			});
-			result.count += 1;
-
 		});
 
 		callback(result);
