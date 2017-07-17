@@ -21,24 +21,24 @@ class Routes{
 
 			let registrationResponse = {}
 
-			if (data.idService === ''){
-	            registrationResponse.error = true;
-	            registrationResponse.message = `id cant be empty.`;
-	            response.status(412).json(registrationResponse);
-			}else {
-				helper.saveImagesService(data, (result) =>{
+			// if (data.idService === ''){
+	        //     registrationResponse.error = true;
+	        //     registrationResponse.message = `id cant be empty.`;
+	        //     response.status(412).json(registrationResponse);
+			// }else {
+			// 	helper.saveImagesService(data, (result) =>{
 
-					if (result.error) {
-						registrationResponse.error = true;
-						registrationResponse.message = `Server error.`;
-						response.status(404).json(registrationResponse);
-					}else{
-						registrationResponse.error = false;
-						registrationResponse.message = `Image save.`;
-						response.status(200).json(registrationResponse);
-					}
-				});					
-			}
+			// 		if (result.error) {
+			// 			registrationResponse.error = true;
+			// 			registrationResponse.message = `Server error.`;
+			// 			response.status(404).json(registrationResponse);
+			// 		}else{
+			// 			registrationResponse.error = false;
+			// 			registrationResponse.message = `Image save.`;
+						response.status(200).json(data.images);
+			// 		}
+			// 	});					
+			// }
 		});
 
 		this.app.get('/', function (request, response) {
