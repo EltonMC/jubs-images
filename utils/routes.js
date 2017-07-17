@@ -27,7 +27,6 @@ class Routes{
 	            response.status(412).json(registrationResponse);
 			}else {
 				helper.saveImagesService(data, (result) =>{
-
 					if (result.error) {
 						registrationResponse.error = true;
 						registrationResponse.message = `Server error.`;
