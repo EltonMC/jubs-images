@@ -72,7 +72,7 @@ class Helper{
 
 	removeImagePerfil(data, callback){
 		let result = {
-			error: falses
+			error: false
 		};
 		var blobService = azure.createBlobService();
 		blobService.deleteBlob('images-perfil', '1179795758780631', function(error, response){
