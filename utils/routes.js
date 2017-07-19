@@ -19,22 +19,22 @@ class Routes{
 				images: request.body.images,
 			}
 
-			let registrationResponse = {}
+			let returnResponse = {}
 
 			if (data.idService === ''){
-	            registrationResponse.error = true;
-	            registrationResponse.message = `id cant be empty.`;
-	            response.status(412).json(registrationResponse);
+	            returnResponse.error = true;
+	            returnResponse.message = `id cant be empty.`;
+	            response.status(412).json(returnResponse);
 			}else {
 				helper.saveImagesService(data, (result) =>{
 					if (result.error) {
-						registrationResponse.error = true;
-						registrationResponse.message = `Server error.`;
-						response.status(404).json(registrationResponse);
+						returnResponse.error = true;
+						returnResponse.message = `Server error.`;
+						response.status(404).json(returnResponse);
 					}else{
-						registrationResponse.error = false;
-						registrationResponse.message = `Image save.`;
-						response.status(200).json(registrationResponse);
+						returnResponse.error = false;
+						returnResponse.message = `Image save.`;
+						response.status(200).json(returnResponse);
 					}
 				});					
 			}
@@ -46,22 +46,22 @@ class Routes{
 				image: request.body.image,
 			}
 
-			let registrationResponse = {}
+			let returnResponse = {}
 
 			if (data.idUser == ''){
-	            registrationResponse.error = true;
-	            registrationResponse.message = `id cant be empty.`;
-	            response.status(412).json(registrationResponse);
+	            returnResponse.error = true;
+	            returnResponse.message = `id cant be empty.`;
+	            response.status(412).json(returnResponse);
 			}else {
 				helper.saveImagePerfil(data, (result) =>{
 					if (result.error) {
-						registrationResponse.error = true;
-						registrationResponse.message = `Server error.`;
-						response.status(404).json(registrationResponse);
+						returnResponse.error = true;
+						returnResponse.message = `Server error.`;
+						response.status(404).json(returnResponse);
 					}else{
-						registrationResponse.error = false;
-						registrationResponse.message = `Image save.`;
-						response.status(200).json(registrationResponse);
+						returnResponse.error = false;
+						returnResponse.message = `Image save.`;
+						response.status(200).json(returnResponse);
 					}
 				});					
 			}
@@ -72,22 +72,22 @@ class Routes{
 				idUser: request.params.id
 			}
 
-			let registrationResponse = {}
+			let returnResponse = {}
 
 			if (data.idUser == ''){
-	            registrationResponse.error = true;
-	            registrationResponse.message = `id cant be empty.`;
-	            response.status(412).json(registrationResponse);
+	            returnResponse.error = true;
+	            returnResponse.message = `id cant be empty.`;
+	            response.status(412).json(returnResponse);
 			}else {
 				helper.removeImagePerfil(data, (result) =>{
 					if (result.error) {
-						registrationResponse.error = true;
-						registrationResponse.message = `Server error.`;
-						response.status(404).json(registrationResponse);
+						returnResponse.error = true;
+						returnResponse.message = `Server error.`;
+						response.status(404).json(returnResponse);
 					}else{
-						registrationResponse.error = false;
-						registrationResponse.message = `Image remove.`;
-						response.status(200).json(registrationResponse);
+						returnResponse.error = false;
+						returnResponse.message = `Image remove.`;
+						response.status(200).json(returnResponse);
 					}
 				});					
 			}
