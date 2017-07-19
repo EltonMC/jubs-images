@@ -48,7 +48,7 @@ class Routes{
 
 			let registrationResponse = {}
 
-			if (data.idUser === ''){
+			if (data.idUser == ''){
 	            registrationResponse.error = true;
 	            registrationResponse.message = `id cant be empty.`;
 	            response.status(412).json(registrationResponse);
