@@ -75,7 +75,7 @@ class Helper{
 			error: false
 		};
 		var blobService = azure.createBlobService();
-		blobService.deleteBlob('images-perfil', '1179795758780631', function(error, response){
+		blobService.deleteBlob('images-perfil', data, function(error, response){
 			if(!error){
 				//Sucess
 			}else{
