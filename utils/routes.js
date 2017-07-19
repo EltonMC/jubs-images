@@ -69,7 +69,7 @@ class Routes{
 
 		this.app.delete('/user/:id', (request, response) => {
 			const data = {
-				idUser: request.params.id,
+				idUser: request.params.id
 			}
 
 			let registrationResponse = {}
@@ -86,7 +86,7 @@ class Routes{
 						response.status(404).json(registrationResponse);
 					}else{
 						registrationResponse.error = false;
-						registrationResponse.message = `Image save.`;
+						registrationResponse.message = `Image remove.`;
 						response.status(200).json(registrationResponse);
 					}
 				});					
