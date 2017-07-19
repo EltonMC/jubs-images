@@ -12,17 +12,17 @@ class Helper{
 		};
 		data.images.forEach(function (image, i) {
 
-			var base64Data = image.replace(/^data:image\/png;base64,/, "");
+			var base64Data = image.replace(/^data:image\/jpg;base64,/, "");
 			base64Data +=  base64Data.replace('+', ' ');
 
-			fs.writeFile(data.idService+".png", base64Data, 'base64', function(err) {
+			fs.writeFile(data.idService+".jpg", base64Data, 'base64', function(err) {
 				if(!err){
 					var azure = require('azure-storage');
 					var blobService = azure.createBlobService();
 
-					blobService.createBlockBlobFromLocalFile('images-service', data.idService+'/'+i, data.idService+'.png', function(error, result, res) {
+					blobService.createBlockBlobFromLocalFile('images-service', data.idService+'/'+i, data.idService+'.jpg', function(error, result, res) {
 						if (!error) {
-							fs.unlink(data.idService+'.png', function(error) {
+							fs.unlink(data.idService+'.jpg', function(error) {
 								if (error) {
 									throw error;
 								}
@@ -45,17 +45,17 @@ class Helper{
 			error: false
 		};
 
-		var base64Data = data.image.replace(/^data:image\/png;base64,/, "");
+		var base64Data = data.image.replace(/^data:image\/jpg;base64,/, "");
 		base64Data +=  base64Data.replace('+', ' ');
 
-		fs.writeFile(data.idUser+".png", base64Data, 'base64', function(err) {
+		fs.writeFile(data.idUser+".", base64Data, 'base64', function(err) {
 			if(!err){
 				var azure = require('azure-storage');
 				var blobService = azure.createBlobService();
 
-				blobService.createBlockBlobFromLocalFile('images-perfil', data.idUser, data.idUser+'.png', function(error, result, res) {
+				blobService.createBlockBlobFromLocalFile('images-perfil', data.idUser, data.idUser+'.jpg', function(error, result, res) {
 					if (!error) {
-						fs.unlink(data.idUser+'.png', function(error) {
+						fs.unlink(data.idUser+'.jpg', function(error) {
 							if (error) {
 								throw error;
 							}
