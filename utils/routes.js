@@ -67,6 +67,32 @@ class Routes{
 			}
 		});
 
+		this.app.delete('/user/:id', (request, response) => {
+			const data = {
+				idUser: request.params.id,
+			}
+
+			let registrationResponse = {}
+
+			if (data.idUser == ''){
+	            registrationResponse.error = true;
+	            registrationResponse.message = `id cant be empty.`;
+	            response.status(412).json(registrationResponse);
+			}else {
+				helper.removeImagePerfil(data, (result) =>{
+					if (result.error) {
+						registrationResponse.error = true;
+						registrationResponse.message = `Server error.`;
+						response.status(404).json(registrationResponse);
+					}else{
+						registrationResponse.error = false;
+						registrationResponse.message = `Image save.`;
+						response.status(200).json(registrationResponse);
+					}
+				});					
+			}
+		});
+
 		this.app.get('/', function (request, response) {
 			response.send("Server Images ON!");
 		});
