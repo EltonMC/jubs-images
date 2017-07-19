@@ -48,7 +48,7 @@ class Helper{
 		var base64Data = data.image.replace(/^data:image\/jpg;base64,/, "");
 		base64Data +=  base64Data.replace('+', ' ');
 
-		fs.writeFile(data.idUser+".", base64Data, 'base64', function(err) {
+		fs.writeFile(data.idUser+".jpg", base64Data, 'base64', function(err) {
 			if(!err){
 				var azure = require('azure-storage');
 				var blobService = azure.createBlobService();
