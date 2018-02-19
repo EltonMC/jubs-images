@@ -1,6 +1,5 @@
 {
   "name": "images-jubs",
-  "version": "0.0.1",
   "description": "This Rest API for images Jubs",
   "main": "server.js",
   "scripts": {

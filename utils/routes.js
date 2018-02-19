@@ -42,29 +42,30 @@ class Routes{
 
 		this.app.post('/user', (request, response) => {
 			const data = {
-				idUser: request.body.idUser,
-				image: request.body.image,
+				idUser: request.body.idUser.toString(),
+				image: request.body.image.toString(),
 			}
+			response.status(200).json(data);
 
 			let registrationResponse = {}
 
-			if (data.idUser === ''){
-	            registrationResponse.error = true;
-	            registrationResponse.message = `id cant be empty.`;
-	            response.status(412).json(registrationResponse);
-			}else {
-				helper.saveImagePerfil(data, (result) =>{
-					if (result.error) {
-						registrationResponse.error = true;
-						registrationResponse.message = `Server error.`;
-						response.status(404).json(registrationResponse);
-					}else{
-						registrationResponse.error = false;
-						registrationResponse.message = `Image save.`;
-						response.status(200).json(registrationResponse);
-					}
-				});					
-			}
+			// if (data.idUser === ''){
+	        //     registrationResponse.error = true;
+	        //     registrationResponse.message = `id cant be empty.`;
+	        //     response.status(412).json(registrationResponse);
+			// }else {
+			// 	helper.saveImagePerfil(data, (result) =>{	
+			// 		if (result.error) {
+			// 			registrationResponse.error = true;
+			// 			registrationResponse.message = `Server error.`;
+			// 			response.status(404).json(registrationResponse);
+			// 		}else{
+			// 			registrationResponse.error = false;
+			// 			registrationResponse.message = `Image save.`;
+			// 			response.status(200).json(registrationResponse);
+			// 		}
+			// 	});					
+			// }
 		});
 
 		this.app.get('/', function (request, response) {
