@@ -19,22 +19,22 @@ class Routes{
 				images: request.body.images,
 			}
 
-			let registrationResponse = {}
+			let returnResponse = {}
 
 			if (data.idService === ''){
-	            registrationResponse.error = true;
-	            registrationResponse.message = `id cant be empty.`;
-	            response.status(412).json(registrationResponse);
+	            returnResponse.error = true;
+	            returnResponse.message = `id cant be empty.`;
+	            response.status(412).json(returnResponse);
 			}else {
 				helper.saveImagesService(data, (result) =>{
 					if (result.error) {
-						registrationResponse.error = true;
-						registrationResponse.message = `Server error.`;
-						response.status(404).json(registrationResponse);
+						returnResponse.error = true;
+						returnResponse.message = `Server error.`;
+						response.status(404).json(returnResponse);
 					}else{
-						registrationResponse.error = false;
-						registrationResponse.message = `Image save.`;
-						response.status(200).json(registrationResponse);
+						returnResponse.error = false;
+						returnResponse.message = `Image save.`;
+						response.status(200).json(returnResponse);
 					}
 				});					
 			}
@@ -47,25 +47,50 @@ class Routes{
 			}
 			response.status(200).json(data);
 
-			let registrationResponse = {}
+			let returnResponse = {}
 
-			// if (data.idUser === ''){
-	        //     registrationResponse.error = true;
-	        //     registrationResponse.message = `id cant be empty.`;
-	        //     response.status(412).json(registrationResponse);
-			// }else {
-			// 	helper.saveImagePerfil(data, (result) =>{	
-			// 		if (result.error) {
-			// 			registrationResponse.error = true;
-			// 			registrationResponse.message = `Server error.`;
-			// 			response.status(404).json(registrationResponse);
-			// 		}else{
-			// 			registrationResponse.error = false;
-			// 			registrationResponse.message = `Image save.`;
-			// 			response.status(200).json(registrationResponse);
-			// 		}
-			// 	});					
-			// }
+			if (data.idUser == ''){
+	            returnResponse.error = true;
+	            returnResponse.message = `id cant be empty.`;
+	            response.status(412).json(returnResponse);
+			}else {
+				helper.saveImagePerfil(data, (result) =>{
+					if (result.error) {
+						returnResponse.error = true;
+						returnResponse.message = `Server error.`;
+						response.status(404).json(returnResponse);
+					}else{
+						returnResponse.error = false;
+						returnResponse.message = `Image save.`;
+						response.status(200).json(returnResponse);
+					}
+				});					
+			}
+		});
+
+		this.app.delete('/user/:id', (request, response) => {
+	
+			let idUser = request.params.id;	
+
+			let returnResponse = {}
+
+			if (idUser == ''){
+	            returnResponse.error = true;
+	            returnResponse.message = `id cant be empty.`;
+	            response.status(412).json(returnResponse);
+			}else {
+				helper.removeImagePerfil(idUser, (result) =>{
+					if (result.error) {
+						returnResponse.error = true;
+						returnResponse.message = `Server error.`;
+						response.status(404).json(returnResponse);
+					}else{
+						returnResponse.error = false;
+						returnResponse.message = `Image remove.`;
+						response.status(200).json(returnResponse);
+					}
+				});					
+			}
 		});
 
 		this.app.get('/', function (request, response) {

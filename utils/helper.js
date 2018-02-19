@@ -1,6 +1,7 @@
 'use strict';
  
 const fs = require("fs");
+const azure = require('azure-storage');
 
 class Helper{
  
@@ -17,7 +18,6 @@ class Helper{
 
 			fs.writeFile(data.idService+".jpg", base64Data, 'base64', function(err) {
 				if(!err){
-					var azure = require('azure-storage');
 					var blobService = azure.createBlobService();
 
 					blobService.createBlockBlobFromLocalFile('images-service', data.idService+'/'+i, data.idService+'.jpg', function(error, result, res) {
@@ -48,9 +48,8 @@ class Helper{
 		var base64Data = data.image.replace(/^data:image\/jpg;base64,/, "");
 		base64Data +=  base64Data.replace('+', ' ');
 
-		fs.writeFile(data.idUser+".", base64Data, 'base64', function(err) {
+		fs.writeFile(data.idUser+".jpg", base64Data, 'base64', function(err) {
 			if(!err){
-				var azure = require('azure-storage');
 				var blobService = azure.createBlobService();
 
 				blobService.createBlockBlobFromLocalFile('images-perfil', data.idUser, data.idUser+'.jpg', function(error, result, res) {
@@ -69,6 +68,23 @@ class Helper{
 			}
 		});
 		callback(result);
+	}
+
+	removeImagePerfil(data, callback){
+		let result = {
+			error: false
+		};
+		var blobService = azure.createBlobService();
+		blobService.deleteBlob('images-perfil', data, function(error, response){
+			if(!error){
+				//Sucess
+			}else{
+				result.error = true;
+			}
+
+		});
+		callback(result);
+
 	}
 }
  
