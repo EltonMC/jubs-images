@@ -47,25 +47,25 @@ class Routes{
 			}
 			response.status(200).json(data);
 
-			let returnResponse = {}
+			// let returnResponse = {}
 
-			if (data.idUser == ''){
-	            returnResponse.error = true;
-	            returnResponse.message = `id cant be empty.`;
-	            response.status(412).json(returnResponse);
-			}else {
-				helper.saveImagePerfil(data, (result) =>{
-					if (result.error) {
-						returnResponse.error = true;
-						returnResponse.message = `Server error.`;
-						response.status(404).json(returnResponse);
-					}else{
-						returnResponse.error = false;
-						returnResponse.message = `Image save.`;
-						response.status(200).json(returnResponse);
-					}
-				});					
-			}
+			// if (data.idUser == ''){
+	        //     returnResponse.error = true;
+	        //     returnResponse.message = `id cant be empty.`;
+	        //     response.status(412).json(returnResponse);
+			// }else {
+			// 	helper.saveImagePerfil(data, (result) =>{
+			// 		if (result.error) {
+			// 			returnResponse.error = true;
+			// 			returnResponse.message = `Server error.`;
+			// 			response.status(404).json(returnResponse);
+			// 		}else{
+			// 			returnResponse.error = false;
+			// 			returnResponse.message = `Image save.`;
+			// 			response.status(200).json(returnResponse);
+			// 		}
+			// 	});					
+			// }
 		});
 
 		this.app.delete('/user/:id', (request, response) => {
